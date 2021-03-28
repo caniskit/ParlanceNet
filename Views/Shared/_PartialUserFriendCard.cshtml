@@ -1,0 +1,34 @@
+﻿<div class="requestfriend-card">
+<div class="reqfriend-head">
+    <p>Friend List</p>
+    <div>
+        <a href="#">See All</a>
+    </div>
+</div>
+
+<div class="reqfriend-container">
+    
+    @foreach (var item in Model.friends)
+    {
+
+        <div class="reqfriend-item">
+          @if (item.AvatarImgPath != null)
+          {
+              <img class="rounded-circle" src="~/Content/images/avatars/@item.AvatarImgPath" style="width: 50px; height: 50px;"/>
+          }
+          else
+          {
+              <img class="rounded-circle" src="~/Content/images/avatars/userp.png" style="width:50px; height:50px;" />
+          }
+            <div class="reqfrienditem-body">
+                <div class="reqfrienditem-header">
+                    <a href="@Url.Action("Index","Profile",new{username=item.Username})">@item.Fullname</a>@*new*@
+                </div>
+               
+            </div>
+        </div>
+
+    }
+
+</div>
+</div>

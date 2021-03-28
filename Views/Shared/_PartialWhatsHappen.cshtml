@@ -1,0 +1,79 @@
+﻿
+
+<div class="homePost">
+
+    <div class="whatsHappen-header">
+        <div class="whatsHappen-create">Create Post</div>
+    </div>
+    <div class="whatsHappen-container" >
+        <div class="whatsHappen-downcontainer">
+            <a href="#"> <img class="rounded-circle" src="~/Content/images/userp.png"/></a>
+            <textarea value="" id="postText" placeholder="Write Something..."  class="form-control" rows="2"></textarea>
+        </div>
+
+        <div id="postImgPrev">
+            <img style="width:100%;" alt="" />
+        </div>
+
+        <hr />
+        <div class="container whatsHappen">
+            <label  onclick="openPostFile()"> <i class="far fa-image fa-2x "></i></label>
+            <input  type="file" name="postImg" id="uploadpost-img" />
+            <button type="button" class="btn btn-info" onclick="sharePost()">Share</button>
+        </div>
+    </div>
+ 
+
+</div>
+
+<script>
+    var postOfile;
+
+    function openPostFile() {
+        $("#uploadpost-img").click();
+    }
+
+    $(document).ready(function () {
+        $('#uploadpost-img').change(function (e) {
+
+            postOfile = e.target.files[0];
+            readPostUrl(this)
+
+        });
+    });
+
+    function readPostUrl(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#postImgPrev').children('img').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    function sharePost() {
+        var formdata = new FormData();
+        formdata.append("postImg", postOfile);
+        formdata.append("postText", $('#postText').val())
+
+        $.ajax({
+            data: formdata,
+            method: "post",
+            contentType: false,
+            processData: false,
+            url: "/Home/SharePost",
+            success: function (response) {
+                
+                   $('#posts').load('/Home/NewPosts');
+                
+                console.log(response);
+                $('#postText').val("");
+                   $('#postImgPrev').children('img').attr('src',"");
+            }
+        });
+    }
+    
+
+</script>
