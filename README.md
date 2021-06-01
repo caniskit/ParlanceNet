@@ -1,6 +1,6 @@
 # ParlanceNet
 The app is a simple social media site as it seems. Users can add friends and share content after creating their accounts. Created with .Net Framework ,Javascript and Data provided by SQL Server. This project is my web programming lecture Term project.   
-#Example Views
+# Example Views
 ![Sign Up Page](https://user-images.githubusercontent.com/58433345/120375386-6a529200-c323-11eb-8e60-a033ba3be5a5.png)
 ![Login Page](https://user-images.githubusercontent.com/58433345/120375412-73dbfa00-c323-11eb-99c4-31c8054c395b.png)
 ![Parlance Home](https://user-images.githubusercontent.com/58433345/120375444-7c343500-c323-11eb-8eed-faeda74171da.png)
